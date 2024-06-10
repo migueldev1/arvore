@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>botoes</title>
+    <style>
+        .centro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #meuBotao{
+            display: block;
+            background-color:blue;
+            border: 2px solid white;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            width: 10px;
+            height: 10px;
+        }
+
+        #nao{
+            position: absolute;
+            height: 40px;
+            width: 60px;
+            left: 850px;
+            top: 370px;
+            background-color: blue;
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            margin-left: 10px;
+        }
+
+        
+
+        #minhaMensagem {
+            color: green;
+            display: none;
+        }
+
+        #mensagemErro {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="centro">
+        <button id="meuBotao"></button>
+        <button onmouseover="fuja()" id="nao"> mover </button>
+        <p id="minhaMensagem">SUCESSO</p>
+        <p id="mensagemErro">ERRO</p>
+    </div>
+
+    <script>
+        document.getElementById('meuBotao').addEventListener('click', function(event) {
+            event.stopPropagation();
+            document.getElementById('minhaMensagem').style.display = 'block';
+            document.getElementById('mensagemErro').style.display = 'none';
+        });
+
+        document.addEventListener('click', function() {
+            document.getElementById('mensagemErro').style.display = 'block';
+            document.getElementById('minhaMensagem').style.display = 'none';
+        });
+
+        function fuja(){
+    var botaoNao = document.getElementById("nao")
+
+    var larguraJanela = window.innerWidth;
+    var alturaJanela = window.innerHeight;
+
+    var maxX = larguraJanela - botaoNao.offsetWidth;
+    var maxY = alturaJanela - botaoNao.offsetHeight;
+
+    var aleatorioX = Math.floor(Math.random() * maxX);
+    var aleatorioY = Math.floor(Math.random() * maxY);
+
+    botaoNao.style.left = aleatorioX + "px";
+    botaoNao.style.top = aleatorioY + "px";
+
+}
+    </script>
+</body>
+</html>
